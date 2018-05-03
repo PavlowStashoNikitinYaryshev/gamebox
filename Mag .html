@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>$MODULE_NAME$ - $SITE_NAME$</title>
+<link rel="stylesheet" href="/.s/src/css/1712.css" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+ var navTitle = 'Navigation';
+ var currentPageIdTemplate = '$PAGE_ID$';
+ var currentModuleTemplate = '$MODULE_ID$';
+</script>
+</head>
+
+<body>
+$ADMIN_BAR$
+$GLOBAL_AHEADER$
+<div id="casing">
+ <div id="cas-bg">
+ <div class="wrapper">
+ <div id="cont-box">
+ <?if($MODULE_ID$='forum')?><div class="forum-box"><?endif?>
+ <!-- <middle> -->
+ <div id="content" <?if($HIDE_CLEFTER$)?>class="wide-page"
+ <?endif?>>
+ <section class="module-$MODULE_ID$"><!-- <body> -->
+<?$CATALOG$(2,5)?>
+<?if($TOP_VIEW$)?><hr /><h2><!--<s4623>-->Popularne<!--</s>--></h2>$TOP_VIEW$<?endif?>
+<?if($TOP_SOLD$)?><hr /><h2><!--<s4624>-->Bestsellery<!--</s>--></h2>$TOP_SOLD$<?endif?>
+<?if($LAST_ADD$)?><hr /><h2><!--<s4625>-->Nowosci<!--</s>--></h2>$LAST_ADD$
+ <table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+ <td width="99%"><hr /></td>
+ <td id="last-add-more" class="nowrap" style="text-align:right; width:1%; padding-left:10px;"><a class="noun" href="/shop/all"><!--<s7017>-->Zobacz wszystkie<!--</s>-->...</a></td>
+ </tr></table>
+<?endif?><!-- </body> --></section>
+ </div>
+ <?if(!$HIDE_CLEFTER$)?>
+ <aside>
+ <div id="sidebar">
+ $GLOBAL_CLEFTER$
+ </div>
+ </aside>
+ <?endif?>
+ <!-- </middle> -->
+ <div class="clr"></div>
+ <?if($MODULE_ID$='forum')?></div><?endif?>
+ </div>
+ </div>
+ </div>
+</div>
+$GLOBAL_BFOOTER$
+<script type="text/javascript" src="/.s/t/1712/ui.js"></script>
+</body>
+</html>
