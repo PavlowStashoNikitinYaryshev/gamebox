@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>$TITLE$ - $MODULE_NAME$ - $SITE_NAME$</title>
+<link rel="stylesheet" href="/.s/src/css/1712.css" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+ var navTitle = 'Navigation';
+ var currentPageIdTemplate = '$PAGE_ID$';
+ var currentModuleTemplate = '$MODULE_ID$';
+</script>
+</head>
+
+<body>
+$ADMIN_BAR$
+$GLOBAL_AHEADER$
+<div id="casing">
+ <div id="cas-bg">
+ <div class="wrapper">
+ <div id="cont-box">
+ <?if($MODULE_ID$='forum')?><div class="forum-box"><?endif?>
+ <!-- <middle> -->
+ <div id="content" <?if($HIDE_CLEFTER$)?>class="wide-page"
+ <?endif?>>
+ <section class="module-$MODULE_ID$"><!-- <body> -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+ <td>$SHOP_PATH$</td>
+ <td align="right" class="nowrap"><b><!--<s4521>-->Статус<!--</s>-->:</b> $ORDER_STATUS$</td>
+</tr></table>
+<h1><!--<s4717>-->Заказ<!--</s>--> <!--<s4453>-->№<!--</s>--> $ORDER_CODE$</h1>
+
+$BODY$
+
+<?if($DIGITAL_ITEM_1$)?>
+<div style="text-align:center; font-size:1.6em; padding:15px; line-height:150%;"><?$DIGITAL_GOODS$('<!--<s5481>-->Получить<!--</s>--> %NAME% %SIZE%')?></div>
+<?endif?>
+$ORDER_PRINT$ $ORDER_PDF$
+<?if($DELIVERY$)?>
+<h3 style="margin:5px 0;"><!--<s4454>-->Способ доставки<!--</s>--></h3>
+<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+ <td width="20">&nbsp;</td>
+ <td><b>$DELIVERY$</b><div style="padding-top:5px">$DELIVERY_DESCR$</div></td>
+ <?if($ORDER_TAX$)?><td style="text-align:right;padding-left:20px; font-size:16px;"><?if($ORDER_TAX_EDIT$)?>$ORDER_TAX_EDIT$<?else?>$ORDER_TAX$<?endif?></td><?endif?>
+</tr></table>
+<?endif?>
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top:20px;">
+ <?if($ORDER_DISCOUNT$)?>
+ <tr>
+ <td><h3><!--<s4608>-->Znizka <!--</s>--></h3></td>
+ <td id="order_discount" style="text-align:right;padding-left:20px; font-size:16px;">$ORDER_DISCOUNT$</td>
+ </tr>
+ <?endif?>
+ <tr valign="top">
+ <td><h3><!--<s4513>-->Do zaplaty<!--</s>--></h3></td>
+ <td id="order_topay" style="text-align:right;padding-left:20px; font-size:16px;"><?if($ORDER_DISCOUNT$)?><strike>$ORDER_TOTAL$</strike><br><?endif?>$ORDER_TOPAY$</td>
+ </tr>
+</table>
+
+<h2><!--<s4604>-->Platnosci za zamowienia<!--</s>--></h2>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+ <tr valign="top">
+ <td width="20">&nbsp;</td>
+ <td><b>$PAYMENT$</b><div style="padding-top:5px">$PAYMENT_DESCR$</div></td>
+ <?if($PAY_NOW$)?><td style="text-align:right;padding-left:20px;"><h3>$ORDER_TOPAY_CURR$</h3>$PAY_NOW$</td><?endif?>
+ </tr>
+</table>
+
+<?if($ORDER_FIELDS$)?><div id="order-info" class="commFl" style="margin-top:20px;">$ORDER_FIELDS$</div><?endif?>
+
+<div style="padding:20px 0; text-align:right; font-style: italic;">
+ <b><!--<s4522>-->Dodany<!--</s>-->:</b> $ADD_DATE$, $ADD_TIME$ <?if($MOD_TIME$)?> <b><!--<s4523>-->Zmieniony<!--</s>-->:</b> $MOD_DATE$, $MOD_TIME$<?endif?>
+</div><!-- </body> --></section>
+ </div>
+ <?if(!$HIDE_CLEFTER$)?>
+ <aside>
+ <div id="sidebar">
+ $GLOBAL_CLEFTER$
+ </div>
+ </aside>
+ <?endif?>
+ <!-- </middle> -->
+ <div class="clr"></div>
+ <?if($MODULE_ID$='forum')?></div><?endif?>
+ </div>
+ </div>
+ </div>
+</div>
+$GLOBAL_BFOOTER$
+<script type="text/javascript" src="/.s/t/1712/ui.js"></script>
+</body>
+</html>
