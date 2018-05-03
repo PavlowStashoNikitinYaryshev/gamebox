@@ -1,0 +1,53 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>$MODULE_NAME$ - $SITE_NAME$</title>
+<link rel="stylesheet" href="/.s/src/css/1712.css" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+ var navTitle = 'Navigation';
+ var currentPageIdTemplate = '$PAGE_ID$';
+ var currentModuleTemplate = '$MODULE_ID$';
+</script>
+</head>
+
+<body>
+$ADMIN_BAR$
+$GLOBAL_AHEADER$
+<div id="casing">
+ <div id="cas-bg">
+ <div class="wrapper">
+ <div id="cont-box">
+ <?if($MODULE_ID$='forum')?><div class="forum-box"><?endif?>
+ <!-- <middle> -->
+ <div id="content" <?if($HIDE_CLEFTER$)?>class="wide-page"
+ <?endif?>>
+ <section class="module-$MODULE_ID$"><!-- <body> --><div class="breadcrumbs-wrapper">
+ <div class="breadcrumbs"><a href="$HOME_PAGE_LINK$"><!--<s5176>-->Strona glowna<!--</s>--></a> &raquo; <!--<s5182>-->Pliki<!--</s>--></div>
+ <?if($ADD_ENTRY_LINK$)?><div class="add-link-wrapper">[ <a class="add-link" href="$ADD_ENTRY_LINK$"><!--<s5186>-->Dodaj material<!--</s>--></a> ]</div><?endif?>
+</div>
+<div class="items-stat-wrapper">
+ <div class="items-stat"><!--<s5218>-->Laczne materialy w katalogu<!--</s>-->: <b>$NUM_ENTRIES$</b><?if($NUM_SHOWN$)?><br /><!--<s5220>-->Wyswietlanie materialow<!--</s>-->: <b>$NUM_SHOWN$</b><?endif?></div>
+ <?if($PAGE_SELECTOR$)?><div class="paging-wrapper-top"><!--<s3015>-->Strony<!--</s>-->: $PAGE_SELECTOR$</div><?endif?>
+</div><hr />
+$BODY$<hr />
+<?if($PAGE_SELECTOR1$)?><div class="paging-wrapper-bottom">$PAGE_SELECTOR1$</div><?endif?><!-- </body> --></section>
+ </div>
+ <?if(!$HIDE_CLEFTER$)?>
+ <aside>
+ <div id="sidebar">
+ $GLOBAL_CLEFTER$
+ </div>
+ </aside>
+ <?endif?>
+ <!-- </middle> -->
+ <div class="clr"></div>
+ <?if($MODULE_ID$='forum')?></div><?endif?>
+ </div>
+ </div>
+ </div>
+</div>
+$GLOBAL_BFOOTER$
+<script type="text/javascript" src="/.s/t/1712/ui.js"></script>
+</body>
+</html>
