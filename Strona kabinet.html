@@ -1,0 +1,358 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Informacje o uzytkowniku</title>
+<link rel="stylesheet" href="/.s/src/css/1712.css" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script type="text/javascript">
+ var navTitle = 'Navigation';
+ var currentPageIdTemplate = '$PAGE_ID$';
+ var currentModuleTemplate = '$MODULE_ID$';
+</script>
+</head>
+
+<body>
+$ADMIN_BAR$
+$GLOBAL_AHEADER$
+<div id="casing">
+ <div id="cas-bg">
+ <div class="wrapper">
+ <div id="cont-box">
+ <?if($MODULE_ID$='forum')?><div class="forum-box"><?endif?>
+ <!-- <middle> -->
+ <div id="content" <?if($HIDE_CLEFTER$)?>class="wide-page"
+ <?endif?>>
+ <section class="module-$MODULE_ID$"><!-- <body> --><link rel="stylesheet" href="/.s/src/profile/css/profile.css">
+<script type="text/javascript">
+function uSocialConnect(obj ) {
+ var social = obj.id.split('-')[1];
+ obj = $(obj);
+ if (obj.hasClass('is-connected') ) {
+ if (confirm('Czy na pewno chcesz wylaczyc konto?') ) {
+ obj.addClass('wait');
+ _uPostForm('', {type:'POST', url:'/index/sub/', data:{a:4, s:social}});
+ }
+ } else if (!obj.hasClass('wait') ) {
+ uSocialLogin(social);
+ }
+ return false;
+}
+</script>
+<style type="text/css">
+ .udtb { text-align:left; padding:3px }
+ .udtlb { clear:left; float:left; width:150px }
+ .social-accounts { padding:10px 0 3px }
+ .social-accounts a { opacity:.4 }
+ .social-accounts .is-connected { opacity:1!important }
+ .social-accounts .wait i { background:url(/.s/img/icon/ajsml.gif) no-repeat center center!important }
+ .social-accounts a.cursor-default, .social-accounts a.cursor-default i { cursor:default!important }
+</style>
+<div class="profile">
+ <div class="profile-intro">
+ <div class="profile-head">
+ <div class="profile-photo-block">
+ <div class="profile-photo" style="background-image: url('<?if($_AVATAR_URL$)?> $_AVATAR_URL$ <?else?>/.s/src/profile/img/profile_photo_thumbnail.png<?endif?>');"></div>
+ <?if($_STATUS$ || $_IS_OWN_PROFILE$)?>
+ <div class="profile-status" title="<?if($_LOGGED_IN$)?>Онлайн<?else?>Оффлайн<?endif?>">
+ <?if($_IS_OWN_PROFILE$)?><span class="statusOnline"></span><?else?>$_STATUS$<?endif?>
+ </div>
+ <?endif?>
+ </div>
+ <div class="profile-name">
+ <?if($_NAME$)?><div class="profile-full-name-row"><span class="profile-full-name">$_NAME$</span></div>
+ <div class="profile-nickname"><a href="javascript://" rel="nofollow" onclick="prompt('Адрес профиля данного пользователя','$_PROFILE_URL$')">$_USERNAME$</a></div>
+ <?else?><div class="profile-full-name-row">
+ <span class="profile-full-name">
+ <a href="javascript://" rel="nofollow" onclick="prompt('Адрес профиля данного пользователя','$_PROFILE_URL$')">$_USERNAME$</a>
+ </span>
+ </div><?endif?>
+ </div>
+ <?if($MODER_PANEL_RIGHT$)?><div class="profile-moder-panel">$MODER_PANEL_RIGHT$</div><?endif?>
+ </div>
+ <div class="profile-buttons profile-labels">
+ <?if($_CHANGE_DETAILS_URL$)?><a href="$_CHANGE_DETAILS_URL$" class="profile-label">Изменить данные</a><?endif?>
+ <?if($_PM_READ_URL$)?><a href="$_PM_READ_URL$" class="profile-label">Читать ЛС (<b>$UNREAD_PM$</b>)</a><?endif?>
+ <?if($_PM_SEND_URL$)?><a href="$_PM_SEND_URL$" title="Отправить личное сообщение" class="profile-label">Отправить ЛС</a><?endif?>
+ <?if(!$_IS_OWN_PROFILE$)?>
+ <?if($MODER_PANEL$)?><a href="mailto:$_EMAIL$" class="profile-label">Отправить Email</a>
+ <?else?>
+ <?if($_SEND_EMAIL_URL$)?><a href="$_SEND_EMAIL_URL$" class="profile-label">Отправить Email</a><?endif?>
+ <?endif?>
+ <?endif?>
+ </div>
+ <div class="profile-body">
+ <div class="profile-section">
+ <h3 class="profile-section-name">Aktywnosc uzytkownika</h3>
+ <div class="profile-section-content">
+ <?if($_BANNED_TILL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Zablokowany:</div>
+ <div class="profile-row-content">
+ <?if($_BANNED_TILL$="1")?>
+ Aktywnosc zablokowane na stale!
+ <?else?>
+ Aktywnosc jest zablokowana do $_BANNED_TILL$
+ <?endif?>
+ </div>
+ </div>
+ <?endif?>
+ <?if($MODER_PANEL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">IP:</div>
+ <div class="profile-row-content"><a href="https://apps.db.ripe.net/search/query.html?searchtext=$_IP_ADDRESS$" rel="nofollow" target="_blank">$_IP_ADDRESS$</a></div>
+ </div>
+ <?endif?>
+ <?if($_RANK_NAME$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Ranga:</div>
+ <div class="profile-row-content"><span title="Ранг: $_RANK$">$_RANK_ICON$</span> [ $_RANK_NAME$ ]</div>
+ </div>
+ <?endif?>
+ <?if($_REP_READ_URL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Renoma:</div>
+ <div class="profile-row-content">
+ <span><a href="$_REP_READ_URL$" title="Zobacz historie reputacji">$_REPUTATION$</a></span>
+ <?if($_REP_DO_URL$)?>
+ <span class="profile-small">(<a href="$_REP_DO_URL$">zmienic</a>)</span>
+ <?endif?>
+ </div>
+ </div>
+ <?endif?>
+ <?if($AWARDS_READ_URL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Nagrody:</div>
+ <div class="profile-row-content">
+ <span><a href="$AWARDS_READ_URL$" title="Zobacz liste nagrod">$AWARDS$</a></span>
+ <span class="profile-small">
+ <?if($AWARDS_DO_URL$)?>(<a href="$AWARDS_DO_URL$">wreczyc nagrode</a>)<?endif?>
+ </span>
+ </div>
+ </div>
+ <?endif?>
+ <?if($_BAN_READ_URL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Uwagi:</div>
+ <div class="profile-row-content">
+ <a class="banPercent" title="Zobacz historie uwag" href="$_BAN_READ_URL$">$_BAN_PERCENT$%</a> <?if($_BAN_DO_URL$)?>&nbsp; <a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s28.ucoz.net/img/fr/wm.gif" width="10" height="9" /></a><img alt="" style="margin:0;padding:0;border:0;" src="http://s28.ucoz.net/img/fr/w$_BAN_RATING$.gif" width="49" height="9" /><a href="$_BAN_DO_URL$"><img alt="" style="margin:0;padding:0;border:0;" title="Изменить уровень замечаний" src="http://s28.ucoz.net/img/fr/wp.gif" width="10" height="9" /></a><?endif?>
+ </div>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+ <?if($SOCIAL_LOGIN$)?>
+ <div class="profile-section">
+ <h3 class="profile-section-name">Profile spoleczne</h3>
+ <div class="profile-section-content">
+ <div class="profile-row">
+ <?if($_SOCIAL_ACCOUNTS$)?>
+ <div class="social-accounts profile-social-accounts">
+ <?if($_UID$)?>
+ <a title="uID" href="$_UID_URL$" target="_blank" class="login-with uid is-connected" rel="nofollow"><i></i></a>
+ <?endif?>
+ $_SOCIAL_ACCOUNTS$
+ </div>
+ <?else?>
+ <?if($_UID$)?>
+ <div class="social-accounts">
+ <a title="uID" href="$_UID_URL$" target="_blank" class="login-with uid is-connected" rel="nofollow"><i></i></a>
+ </div>
+ <?endif?>
+ <?endif?>
+ </div>
+ </div>
+ </div>
+ <?endif?>
+ <div class="profile-section">
+ <h3 class="profile-section-name">Podstawowe informacje</h3>
+ <div class="profile-section-content">
+ <?if($MODER_PANEL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">ID:</div>
+ <div class="profile-row-content">$_USER_ID$</div>
+ </div>
+ <?endif?>
+ <?if($_GROUP_NAME$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Zespol:</div>
+ <div class="profile-row-content">$_GROUP_NAME$ <?if($_GROUP_ICON$)?>$_GROUP_ICON$<?endif?></div>
+ </div>
+ <?endif?>
+ <?if($_REG_TIME$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Data rejestracji:</div>
+ <div class="profile-row-content">$_REG_TIME$</div>
+ </div>
+ <?endif?>
+ <?if($_LOG_TIME$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Data wejscia:</div>
+ <div class="profile-row-content">$_LOG_TIME$</div>
+ </div>
+ <?endif?>
+ <?if($_GENDER_NAME$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Podloga:</div>
+ <div class="profile-row-content">$_GENDER_NAME$</div>
+ </div>
+ <?endif?>
+ <?if($_BIRTHDAY$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Data urodzenia:</div>
+ <div class="profile-row-content">$_BIRTHDAY$ [ <b>$_AGE$</b> $_ZODIAC$ ]</div>
+ </div>
+ <?endif?>
+ <?if($_COUNTRY$)?>
+ <div class="profile-row">
+ <div class="profile-row-name"><?if($_UID$)?>Miejsce zamieszkania<?else?>Kraj<?endif?>:</div>
+ <div class="profile-row-content">$_COUNTRY$</div>
+ </div>
+ <?endif?>
+ <?if($_STATE$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Stan:</div>
+ <div class="profile-row-content">$_STATE$</div>
+ </div>
+ <?endif?>
+ <?if($_CITY$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Miasto:</div>
+ <div class="profile-row-content">$_CITY$</div>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+ <div class="profile-section">
+ <h3 class="profile-section-name">Kontakty</h3>
+ <div class="profile-section-content">
+ <div class="profile-row">
+ <div class="profile-row-name">Email:</div>
+ <div class="profile-row-content">
+ <?if($_IS_OWN_PROFILE$)?>
+ $_EMAIL$<?if($_EMAIL_IS_HIDDEN$)?> <span class="profile-small">(Adres ukryty)</span><?endif?>
+ <?else?>
+ <?if($MODER_PANEL$)?>
+ <a href="mailto:$_EMAIL$">$_EMAIL$</a>
+ <?if($_EMAIL_IS_HIDDEN$)?><span style="font-size:7pt">(Адрес скрыт)</span><?endif?>
+ <?if(!$_EMAIL_IS_VERIFIED$)?><span style="color:red;" title="Not verified e-mail">*</span><?endif?>
+ <?else?>
+ <?if($_SEND_EMAIL_URL$)?>
+ <a href="$_SEND_EMAIL_URL$">Napisz e-mail do uzytkownika</a>
+ <?else?>
+ $_EMAIL$
+ <?endif?>
+ <?endif?>
+ <?endif?>
+ <?if($_EMAIL_VERIFICATION_URL$)?>
+ (<b><a href="$_EMAIL_VERIFICATION_URL$"><span style="color:red">Potwierdzenie e-mail</span></a></b>)
+ <?endif?>
+ </div>
+ </div>
+ <?if($_WWW$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Strona:</div>
+ <div class="profile-row-content">$_WWW$</div>
+ </div>
+ <?endif?>
+ <?if($_ICQ$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">ICQ:</div>
+ <div class="profile-row-content">$_ICQ$</div>
+ </div>
+ <?endif?>
+ <?if($_AOL$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">AOL:</div>
+ <div class="profile-row-content">$_AOL$</div>
+ </div>
+ <?endif?>
+ <?if($_MSN$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">MSN:</div>
+ <div class="profile-row-content">$_MSN$</div>
+ </div>
+ <?endif?>
+ <?if($_YAHOO$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Yahoo:</div>
+ <div class="profile-row-content">$_YAHOO$</div>
+ </div>
+ <?endif?>
+ <?if($_PHONE$)?>
+ <div class="profile-row">
+ <div class="profile-row-name">Telefon:</div>
+ <div class="profile-row-content">
+ $_PHONE$
+ <?if($_IS_OWN_PROFILE$ || $MODER_PANEL$)?>
+ <?if($_PHONE_IS_HIDDEN$)?><span class="profile-small">(Telefon jest ukryty)</span><?endif?>
+ <?endif?>
+ </div>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+ <?if($_SIGNATURE$)?>
+ <div class="profile-section">
+ <h3 class="profile-section-name">Podpis (o sobie)</h3>
+ <div class="profile-section-content">$_SIGNATURE$</div>
+ </div>
+ <?endif?>
+ <?if($_IS_ACTIVITY$)?>
+ <div class="profile-section">
+ <h3 class="profile-section-name">Materialy uzytkownika</h3>
+ <div class="profile-section-content">
+ <div class="profile-labels">
+ <?if($_COM_ENTRIES$)?><a href="$_COM_ACTIVITY_URL$" class="profile-label" target="_blank">komentarze (<b>$_COM_ENTRIES$</b>)</a><?endif?>
+ <?if($_FORUM_ENTRIES$)?><a href="$_FORUM_ACTIVITY_URL$" class="profile-label" target="_blank">forum (<b>$_FORUM_ENTRIES$</b>)</a><?endif?>
+ <?if($_BLOG_ENTRIES$)?><a href="$_BLOG_ACTIVITY_URL$" class="profile-label" target="_blank">blog (<b>$_BLOG_ENTRIES$</b>)</a><?endif?>
+ <?if($_NEWS_ENTRIES$)?><a href="$_NEWS_ACTIVITY_URL$" class="profile-label" target="_blank">nowosci(<b>$_NEWS_ENTRIES$</b>)</a><?endif?>
+ <?if($_PUBL_ENTRIES$)?><a href="$_PUBL_ACTIVITY_URL$" class="profile-label" target="_blank">artykuly (<b>$_PUBL_ENTRIES$</b>)</a><?endif?>
+ <?if($_LOAD_ENTRIES$)?><a href="$_LOAD_ACTIVITY_URL$" class="profile-label" target="_blank">pliki(<b>$_LOAD_ENTRIES$</b>)</a><?endif?>
+ <?if($_DIR_ENTRIES$)?><a href="$_DIR_ACTIVITY_URL$" class="profile-label" target="_blank">strony (<b>$_DIR_ENTRIES$</b>)</a><?endif?>
+ <?if($_BOARD_ENTRIES$)?><a href="$_BOARD_ACTIVITY_URL$" class="profile-label" target="_blank">ogloszenia (<b>$_BOARD_ENTRIES$</b>)</a><?endif?>
+ <?if($_PHOTO_ENTRIES$)?><a href="$_PHOTO_ACTIVITY_URL$" class="profile-label" target="_blank">zdjecia (<b>$_PHOTO_ENTRIES$</b>)</a><?endif?>
+ <?if($_STUFF_ENTRIES$)?><a href="$_STUFF_ACTIVITY_URL$" class="profile-label" target="_blank">gry(<b>$_STUFF_ENTRIES$</b>)</a><?endif?>
+ <?if($_SHOP_ENTRIES$)?><a href="$_SHOP_ACTIVITY_URL$" class="profile-label" target="_blank">towary (<b>$_SHOP_ENTRIES$</b>)</a><?endif?>
+ <?if($_VIDEO_ENTRIES$)?><a href="$_VIDEO_ACTIVITY_URL$" class="profile-label" target="_blank">video (<b>$_VIDEO_ENTRIES$</b>)</a><?endif?>
+ </div>
+ </div>
+ </div>
+ <?endif?>
+ <?if($USERS_LIST_URL$)?>
+ <div class="profile-section">
+ <form method="post" action="/index" name="fuser" style="margin:0px">
+ <table border="0" cellpadding="4" cellspacing="1" width="100%" id="usch">
+ <tr>
+ <td align="center">
+ <input type="button" class="allUsersBtn" style="width:150px;" onclick="window.location.href='/index/15-1'" value="Lista uzytkownikow" />
+ <input type="text" class="uSearchFl" name="user" style="width:240px;text-align:center;" size="20" placeholder="Login uzytkownika" maxlength="25" />
+ <input type="submit" class="uSearchFlSbm" style="width:150px;" value="Znajdz uzytkownikow" />
+ </td>
+ </tr>
+ </table>
+ <input type="hidden" name="a" value="15" />
+ </form>
+ </div>
+ <?endif?>
+ </div>
+ </div>
+</div><!-- </body> --></section>
+ </div>
+ <?if(!$HIDE_CLEFTER$)?>
+ <aside>
+ <div id="sidebar">
+ $GLOBAL_CLEFTER$
+ </div>
+ </aside>
+ <?endif?>
+ <!-- </middle> -->
+ <div class="clr"></div>
+ <?if($MODULE_ID$='forum')?></div><?endif?>
+ </div>
+ </div>
+ </div>
+</div>
+$GLOBAL_BFOOTER$
+<script type="text/javascript" src="/.s/t/1712/ui.js"></script>
+</body>
+</html>
