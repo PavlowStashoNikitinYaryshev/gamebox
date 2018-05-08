@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<meta name="robots" content="noindex, nofollow">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>Zamówienie #$ORDER_ID$ - $MODULE_NAME$</title>
+	</head>
+	<body style="background-color:#FFFFFF;">
+		<center>
+			<h1>$MODULE_NAME$</h1>
+			<div>$HOME_PAGE_LINK$</div>
+			<h2>Zamówienie #$ORDER_ID$</h2>
+		</center>
+		<p>Czas złożenia zamówienia: <b>$ADD_WDAY$, $ADD_DATE$ $ADD_TIME$</b></p>
+		<p>Sposób płatności: <b>$PAYMENT$</b></p>
+		<?if($DELIVERY$)?><p>Metoda dostawy: <b>$DELIVERY$</b></p><?endif?>
+		<?if($ORDER_UID$)?><p>Klient: <b>$USER_FULL_NAME$</b></p><p>Email: <b>$_EMAIL$</b></p><?endif?>
+		$ORDER_FIELDS$
+		<h3><u>Zamówiony towar</u></h3>
+		<table width="100%" cellspacing="0" cellpadding="5" border="1" id="order-table">
+			<thead>
+			<tr>
+				<th>№</th>
+				<th>Art.</th>
+				<th>Fotografia</th>
+				<th>Nazwa</th>
+				<th>Jednostka</th>
+				<th>Il.</th>
+				<th>Cena</th>
+				<th>Suma</th>
+			</tr>
+			</thead>
+			<tbody>
+				$BODY$
+			</tbody>
+		</table>
+		<table width="100%" cellspacing="0" cellpadding="5" border="0">
+			<tr valign="bottom">
+				<td>
+					<br><div>Dostarczone przez: _________________________</div>
+					<br><div>Otrzymane przez: _________________________</div>
+				</td>
+				<td align="right">
+					<h3>Ogółem: $ORDER_AMOUNT$</h3>
+					<?if($ORDER_TAX$)?><h3>Opłata za dostawę: $ORDER_TAX$</h3><?endif?>
+					<?if($ORDER_DISCOUNT$)?><h3>Rabat: $ORDER_DISCOUNT$</h3><?endif?>
+					<br><h3>Kwota do zapłacenia za  pomocą wybranego sposobu płatności: $ORDER_TOPAY_CURR$</h3>
+				</td>
+			</tr>
+		</table>
+	</body>
+	</html>
